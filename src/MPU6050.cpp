@@ -73,5 +73,5 @@ void MPU6050::readAccel()
     accel_x  = readByte(MPU6050_ACCEL_XOUT_H) << 8;
     accel_x |= readByte(MPU6050_ACCEL_XOUT_L);
     //for debugging
-    printf("Accel X: %d", accel_x);
+    printf("Accel X: %d\n", accel_x);
 }
