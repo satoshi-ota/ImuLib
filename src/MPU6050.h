@@ -27,7 +27,7 @@ public:
 
     //void reset();
 
-    //void readAcc();
+    void readAccel();
 
     //void readGyro();
 

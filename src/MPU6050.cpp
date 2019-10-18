@@ -66,3 +66,12 @@ int MPU6050::writeByte(int writeRegister, int writeValue)
     }
     return toReturn;
 }
+
+void MPU6050::readAccel()
+{
+    int accel_x;
+    accel_x  = readByte(MPU6050_ACCEL_XOUT_H) << 8;
+    accel_x |= readByte(MPU6050_ACCEL_XOUT_L);
+    //for debugging
+    printf("Accel X: %d", accel_x);
+}
