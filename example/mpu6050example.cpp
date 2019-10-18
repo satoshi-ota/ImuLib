@@ -23,6 +23,7 @@ int main()
 
         while(mpu6050->error >= 0)
         {
+            printf("Now publishing...");
             mpu6050->readAccel();
             sleep(1);
         }
