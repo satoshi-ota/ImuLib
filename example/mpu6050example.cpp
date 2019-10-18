@@ -21,6 +21,10 @@ int main()
         int devAddress = mpu6050->readByte(MPU6050_WHO_AM_I);
         printf("I am 0x%02X\n", devAddress);
 
+        printf("Now publishing...");
+        mpu6050->readAccel();
+        sleep(1);
+
         while(mpu6050->error >= 0)
         {
             printf("Now publishing...");
