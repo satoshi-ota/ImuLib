@@ -55,7 +55,7 @@ int MPU6050::readByte(int readRegister)
     return toReturn;
 }
 
-int MPU6050::writeByte(int writeRegister, int writevalue)
+int MPU6050::writeByte(int writeRegister, int writeValue)
 {
     int toReturn = i2c_smbus_write_byte_data(kI2CFileDescriptor, writeRegister, writeValue);
     if(toReturn < 0)

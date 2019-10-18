@@ -13,7 +13,7 @@ extern "C" {
 #include <unistd.h>
 #include <errno.h>
 
-class MPU6050_H
+class MPU6050
 {
 public:
     unsigned char kI2CBus;         // I2C bus of the MPU6050
@@ -25,11 +25,11 @@ public:
     bool openMPU6050();
     void closeMPU6050();
 
-    void reset();
+    //void reset();
 
-    void readAcc();
+    //void readAcc();
 
-    void readGyro();
+    //void readGyro();
 
     // Read the given register
     int readByte(int readRegister);
