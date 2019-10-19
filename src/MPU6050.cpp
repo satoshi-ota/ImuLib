@@ -43,6 +43,11 @@ void MPU6050::closeMPU6050()
     }
 }
 
+void MPU6050::calibration()
+{
+
+}
+
 int MPU6050::readByte(int readRegister)
 {
     int toReturn = i2c_smbus_read_byte_data(kI2CFileDescriptor, readRegister);
@@ -76,7 +81,7 @@ void MPU6050::readAccel()
     accel_z_raw_  = readByte(MPU6050_ACCEL_ZOUT_H) << 8;
     accel_z_raw_ |= readByte(MPU6050_ACCEL_ZOUT_L);
     //for debugging
-    printf("Accel X: %d\n", accel_x_raw_);
+    //printf("Accel X: %d\n", accel_x_raw_);
 }
 
 void MPU6050::readGyro()

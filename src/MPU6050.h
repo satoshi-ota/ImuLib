@@ -1,6 +1,7 @@
 #ifndef MPU6050_H
 #define MPU6050_H
 
+#include <math.h>
 #include <cstddef>
 extern "C" {
     #include <linux/i2c-dev.h>
@@ -16,14 +17,13 @@ extern "C" {
 class MPU6050
 {
 public:
-    unsigned char kI2CBus;         // I2C bus of the MPU6050
-    int kI2CFileDescriptor;        // File Descriptor to the MPU6050
-    int kI2CAddress;               // Address of MPU6050; defaults to 0x68
-    int error;
     MPU6050(int address=0x68);
     ~MPU6050();
+
     bool openMPU6050();
     void closeMPU6050();
+
+    void calibration();
 
     void readAccel();
 
@@ -31,18 +31,22 @@ public:
 
     // Read the given register
     int readByte(int readRegister);
-
     // Write the the given value to the given register
     int writeByte(int writeRegister, int writeValue);
 
     int getError();
 
-    int inline getAccelX(){return accel_x_raw_;};
-    int inline getAccelY(){return accel_y_raw_;};
-    int inline getAccelZ(){return accel_z_raw_;};
-    int inline getGyroX(){return gyro_x_raw_;};
-    int inline getGyroY(){return gyro_y_raw_;};
-    int inline getGyroZ(){return gyro_z_raw_;};
+    int inline getAccelX(){return accel_x_raw_ / 16384;};
+    int inline getAccelY(){return accel_y_raw_ / 16384;};
+    int inline getAccelZ(){return accel_z_raw_ / 16384;};
+    int inline getGyroX(){return gyro_x_raw_ / 131 / 180 * M_PI;};
+    int inline getGyroY(){return gyro_y_raw_ / 131 / 180 * M_PI;};
+    int inline getGyroZ(){return gyro_z_raw_ / 131 / 180 * M_PI;};
+
+    unsigned char kI2CBus;         // I2C bus of the MPU6050
+    int kI2CFileDescriptor;        // File Descriptor to the MPU6050
+    int kI2CAddress;               // Address of MPU6050; defaults to 0x68
+    int error;
 
 private:
     int16_t accel_x_raw_;
@@ -51,6 +55,13 @@ private:
     int16_t gyro_x_raw_;
     int16_t gyro_y_raw_;
     int16_t gyro_z_raw_;
+
+    int16_t accel_x_offset_;
+    int16_t accel_y_offset_;
+    int16_t accel_z_offset_;
+    int16_t gyro_x_offset_;
+    int16_t gyro_y_offset_;
+    int16_t gyro_z_offset_;
 };
 
 
