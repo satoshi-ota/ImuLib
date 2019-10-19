@@ -69,9 +69,22 @@ int MPU6050::writeByte(int writeRegister, int writeValue)
 
 void MPU6050::readAccel()
 {
-    int accel_x;
-    accel_x  = readByte(MPU6050_ACCEL_XOUT_H) << 8;
-    accel_x |= readByte(MPU6050_ACCEL_XOUT_L);
+    accel_x_raw_  = readByte(MPU6050_ACCEL_XOUT_H) << 8;
+    accel_x_raw_ |= readByte(MPU6050_ACCEL_XOUT_L);
+    accel_y_raw_  = readByte(MPU6050_ACCEL_YOUT_H) << 8;
+    accel_y_raw_ |= readByte(MPU6050_ACCEL_YOUT_L);
+    accel_z_raw_  = readByte(MPU6050_ACCEL_ZOUT_H) << 8;
+    accel_z_raw_ |= readByte(MPU6050_ACCEL_ZOUT_L);
     //for debugging
     printf("Accel X: %d\n", accel_x);
+}
+
+void MPU6050::readGyro()
+{
+    gyro_x_raw_  = readByte(MPU6050_GYRO_XOUT_H) << 8;
+    gyro_x_raw_ |= readByte(MPU6050_GYRO_XOUT_L);
+    gyro_y_raw_  = readByte(MPU6050_GYRO_YOUT_H) << 8;
+    gyro_y_raw_ |= readByte(MPU6050_GYRO_YOUT_L);
+    gyro_z_raw_  = readByte(MPU6050_GYRO_ZOUT_H) << 8;
+    gyro_z_raw_ |= readByte(MPU6050_GYRO_ZOUT_L);
 }

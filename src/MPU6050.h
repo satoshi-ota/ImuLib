@@ -25,11 +25,9 @@ public:
     bool openMPU6050();
     void closeMPU6050();
 
-    //void reset();
-
     void readAccel();
 
-    //void readGyro();
+    void readGyro();
 
     // Read the given register
     int readByte(int readRegister);
@@ -38,6 +36,21 @@ public:
     int writeByte(int writeRegister, int writeValue);
 
     int getError();
+
+    int inline getAccelX();
+    int inline getAccelY();
+    int inline getAccelZ();
+    int inline getGyroX();
+    int inline getGyroY();
+    int inline getGyroZ();
+
+private:
+    int accel_x_raw_;
+    int accel_y_raw_;
+    int accel_z_raw_;
+    int gyro_x_raw_;
+    int gyro_y_raw_;
+    int gyro_z_raw_;
 };
 
 
