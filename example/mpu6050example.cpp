@@ -23,10 +23,6 @@ int main()
 
         mpu6050->writeByte(MPU6050_PWR_MGMT_1, 0x00);
 
-        printf("Now publishing...\n");
-        mpu6050->readAccel();
-        sleep(1);
-
         while(mpu6050->error >= 0)
         {
             printf("Now publishing...\n");

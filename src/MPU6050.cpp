@@ -76,7 +76,7 @@ void MPU6050::readAccel()
     accel_z_raw_  = readByte(MPU6050_ACCEL_ZOUT_H) << 8;
     accel_z_raw_ |= readByte(MPU6050_ACCEL_ZOUT_L);
     //for debugging
-    printf("Accel X: %d\n", accel_x);
+    printf("Accel X: %d\n", accel_x_raw_);
 }
 
 void MPU6050::readGyro()

@@ -37,20 +37,20 @@ public:
 
     int getError();
 
-    int inline getAccelX();
-    int inline getAccelY();
-    int inline getAccelZ();
-    int inline getGyroX();
-    int inline getGyroY();
-    int inline getGyroZ();
+    int inline getAccelX(){return accel_x_raw_;};
+    int inline getAccelY(){return accel_y_raw_;};
+    int inline getAccelZ(){return accel_z_raw_;};
+    int inline getGyroX(){return gyro_x_raw_;};
+    int inline getGyroY(){return gyro_y_raw_;};
+    int inline getGyroZ(){return gyro_z_raw_;};
 
 private:
-    int accel_x_raw_;
-    int accel_y_raw_;
-    int accel_z_raw_;
-    int gyro_x_raw_;
-    int gyro_y_raw_;
-    int gyro_z_raw_;
+    int16_t accel_x_raw_;
+    int16_t accel_y_raw_;
+    int16_t accel_z_raw_;
+    int16_t gyro_x_raw_;
+    int16_t gyro_y_raw_;
+    int16_t gyro_z_raw_;
 };
 
 
