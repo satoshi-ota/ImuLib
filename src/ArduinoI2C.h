@@ -36,7 +36,7 @@ public:
     int error;
 
 private:
-    int16_t arduino_raw_;
+    int8_t arduino_raw_;
 
 };
 

@@ -23,9 +23,9 @@ int main()
 
         while(arduino->error >= 0)
         {
-            printf("Now publishing...\n");
+            //printf("Now publishing...\n");
             arduino->readArduino();
-            sleep(1);
+            usleep(20000);
         }
     }
     arduino->closeARDUINO();
